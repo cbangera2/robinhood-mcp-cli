@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "robinhood-mcp-cli"
+version = "0.1.0"
+description = "Programmatic CLI for the Robinhood Trading MCP server"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "cbang" }]
+keywords = ["robinhood", "mcp", "cli", "trading", "oauth"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "mcp>=1.14",
+  "httpx2>=2.10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+rh = "rh_mcp_cli.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rh_mcp_cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

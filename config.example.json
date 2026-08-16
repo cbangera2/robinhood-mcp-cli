@@ -1,0 +1,5 @@
+{
+  "endpoint": "https://agent.robinhood.com/mcp/trading",
+  "token_file": "state/robinhood_token.json",
+  "account_number": "000000000"
+}
