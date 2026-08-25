@@ -13,9 +13,36 @@ operations, and never reads another application's credential store.
 ## Install
 
 Pre-built single-file binaries for Linux/macOS/Windows are attached to each
-[GitHub release](https://github.com/cbangera2/robinhood-mcp-cli/releases)
-(e.g. `rh-macos-arm64`). Download the one for your platform, make it
-executable, and run it directly — no Python required.
+[GitHub release](https://github.com/cbangera2/robinhood-mcp-cli/releases).
+No Python required.
+
+macOS (Apple Silicon):
+
+```bash
+curl -fsSL -o rh https://github.com/cbangera2/robinhood-mcp-cli/releases/latest/download/rh-macos-arm64
+chmod +x rh && ./rh --version
+```
+
+Linux x64:
+
+```bash
+curl -fsSL -o rh https://github.com/cbangera2/robinhood-mcp-cli/releases/latest/download/rh-linux-x64
+chmod +x rh && ./rh --version
+```
+
+Windows (PowerShell):
+
+```powershell
+irm https://github.com/cbangera2/robinhood-mcp-cli/releases/latest/download/rh-windows-x64.exe -OutFile rh.exe
+.\rh.exe --version
+```
+
+Verify a download against the release's `SHA256SUMS.txt`:
+
+```bash
+curl -fsSL -O https://github.com/cbangera2/robinhood-mcp-cli/releases/latest/download/SHA256SUMS.txt
+sha256sum -c --ignore-missing SHA256SUMS.txt   # macOS: shasum -a 256 -c
+```
 
 Or install from source:
 
