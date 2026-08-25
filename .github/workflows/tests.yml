@@ -27,3 +27,7 @@ jobs:
         run: pytest -q
       - name: Verify dependencies
         run: python -m pip check
+      - name: Audit dependencies
+        run: |
+          python -m pip install pip-audit
+          python -m pip_audit --skip-editable
