@@ -720,6 +720,21 @@ def _add_symbols(parser: argparse.ArgumentParser, *, required: bool = True) -> N
     parser.add_argument("symbols", nargs="+" if required else "*", help="One or more ticker symbols")
 
 
+def _cli_version() -> str:
+    try:
+        from rh_mcp_cli._version import __version__
+
+        return str(__version__)
+    except ImportError:
+        pass
+    try:
+        from importlib.metadata import PackageNotFoundError, version
+
+        return version("robinhood-mcp-cli")
+    except PackageNotFoundError:
+        return "0.0.0.dev0"
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="rh",
@@ -732,7 +747,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--account", type=str, default=None, help="Override account_number")
     parser.add_argument("--callback-file", type=Path, default=None, help="Callback URL poll file (agent-driven setups)")
     parser.add_argument("--bearer-token", type=str, default=None, help="Static bearer token (prefer env ROBINHOOD_MCP_BEARER_TOKEN)")
-    parser.add_argument("--version", action="version", version="%(prog)s 0.1.0")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {_cli_version()}")
     parser.add_argument("--yes", action="store_true", help="Auto-confirm order-mutating commands")
 
     sub = parser.add_subparsers(dest="command", required=True, metavar="command")

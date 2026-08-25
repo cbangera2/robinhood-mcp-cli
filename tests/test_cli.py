@@ -170,3 +170,9 @@ def test_parse_json_arg_rejects_bad_json():
 
     with pytest.raises(argparse.ArgumentTypeError):
         _parse_json_arg("filters", "{not json")
+
+def test_cli_version_reports_a_string():
+    from rh_mcp_cli.cli import _cli_version
+
+    assert isinstance(_cli_version(), str)
+    assert _cli_version()
