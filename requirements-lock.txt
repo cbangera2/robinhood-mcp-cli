@@ -18,7 +18,7 @@ attrs==26.1.0
     #   referencing
 cffi==2.1.1
     # via cryptography
-click==8.4.2
+click==8.5.0
     # via uvicorn
 cryptography==50.0.0
     # via pyjwt
