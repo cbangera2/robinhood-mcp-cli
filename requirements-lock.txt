@@ -20,7 +20,7 @@ cffi==2.1.1
     # via cryptography
 click==8.4.2
     # via uvicorn
-cryptography==50.0.0
+cryptography==50.0.1
     # via pyjwt
 h11==0.16.0
     # via
